@@ -1,12 +1,12 @@
-package com.example.demo;
+package com.example.memory;
 
 /**
  * Classe Carte (modèle MVC) permettant de stocker les infomations d'une carte du jeu Memory
  *
- * @since le 28/02/2023
- * @version le 02/2023
- *
  * @author Nicolas Ferrayé - 3iL
+ *
+ * @since le 28/02/2023
+ * @version le ../02/2023
  */
 public class Carte {
 
@@ -18,6 +18,7 @@ public class Carte {
      * @param pfNomCarte le nom de la carte
      */
     public Carte(int pfIdCarte, String pfNomCarte) {
+        //TODO : vérifier si idCarte est un integer > 0
         this.idCarte = pfIdCarte;
         this.nomCarte = pfNomCarte;
     }
@@ -40,6 +41,7 @@ public class Carte {
      * @param pfIdCarte l'identifiant de la carte
      */
     public void setIdCarte(int pfIdCarte) {
+        //TODO : vérifier si idCarte est un integer > 0
         this.idCarte = pfIdCarte;
     }
 
