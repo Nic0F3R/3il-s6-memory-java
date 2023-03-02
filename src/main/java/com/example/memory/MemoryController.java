@@ -1,5 +1,6 @@
 package com.example.memory;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,10 +10,11 @@ import javafx.scene.control.Button;
  *
  * @author Nicolas Ferrayé - 3iL
  *
- * @since le ../02/2023
- * @version le ../02/2023
+ * @since le 02/03/2023
+ * @version le 02/03/2023
  */
 public class MemoryController {
+
     @FXML
     private Button btn1;
 
@@ -22,9 +24,10 @@ public class MemoryController {
         if(evt.getSource() instanceof Button) {
             Button btn = (Button) evt.getSource();
             if(btn.getId().equals("btn01")) {
-                System.out.println("C'est mon bouton\n");
+                System.out.println("C'est mon bouton");
             }
         }
 
     }
+
 }

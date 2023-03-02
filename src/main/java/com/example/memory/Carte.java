@@ -11,16 +11,21 @@ package com.example.memory;
 public class Carte {
 
     private int idCarte;
+
+    // Identifiant non unique déterminant le type de la carte (pour déclarer la paire)
+    private int typeCarte;
+
     private String nomCarte;
 
     /**
      * @param pfIdCarte l'identifiant de la carte
      * @param pfNomCarte le nom de la carte
      */
-    public Carte(int pfIdCarte, String pfNomCarte) {
+    public Carte(int pfIdCarte, int pfTypeCarte, String pfNomCarte) {
         //TODO : vérifier si idCarte est un integer > 0
         this.idCarte = pfIdCarte;
         this.nomCarte = pfNomCarte;
+        this.typeCarte = pfTypeCarte;
     }
 
     /**
@@ -28,6 +33,13 @@ public class Carte {
      */
     public int getIdCarte() {
         return this.idCarte;
+    }
+
+    /**
+     * @return le type de la carte
+     */
+    public int getTypeCarte() {
+        return this.typeCarte;
     }
 
     /**
@@ -43,6 +55,13 @@ public class Carte {
     public void setIdCarte(int pfIdCarte) {
         //TODO : vérifier si idCarte est un integer > 0
         this.idCarte = pfIdCarte;
+    }
+
+    /**
+     * @param pfTypeCarte le type de la carte
+     */
+    public void setTypeCarte(int pfTypeCarte) {
+        this.typeCarte = pfTypeCarte;
     }
 
     /**
