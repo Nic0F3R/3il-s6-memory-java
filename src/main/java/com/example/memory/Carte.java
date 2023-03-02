@@ -6,7 +6,7 @@ package com.example.memory;
  * @author Nicolas Ferrayé - 3iL
  *
  * @since le 28/02/2023
- * @version le ../02/2023
+ * @version le 02/03/2023
  */
 public class Carte {
 

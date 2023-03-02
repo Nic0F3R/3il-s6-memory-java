@@ -47,8 +47,8 @@ public class MemoryApplication extends Application {
 
         // TODO : vérifier si le nombre de carte est positif et pair
 
-        this.nbCarte = 8;
-        int typeCarte = 0;
+        this.nbCarte = 16;
+        int typeCarte = 0; // permet de déclarer les paires
 
         for(int i = 0 ; i < this.nbCarte ; i++) {
 
