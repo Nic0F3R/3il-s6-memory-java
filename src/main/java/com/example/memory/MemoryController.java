@@ -3,6 +3,7 @@ package com.example.memory;
 import javafx.beans.InvalidationListener;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -417,23 +418,24 @@ public class MemoryController {
                 this.carte1 = null;
                 this.carte2 = null;
 
-
-
                 btn.setDisable(true);
                 btnCarte1.setDisable(true);
                 //btn.setStyle("-fx-border-color: #75975e;");
 
                 this.nbCarteRetournee = 0;
                 this.nbCarteTrouvees++;
+
             } else {
                 // délais puis retourne la carte
 
                 Button btnCarte1 = (Button) this.getById(carte1.getIdCarteInterface());
 
-                btn.setText("?");
-                btnCarte1.setText("?");
-
-
+                delay(2000, () -> {
+                    btn.setText("?");
+                    btnCarte1.setText("?");
+                });
+                //btn.setText("?");
+                //btnCarte1.setText("?");
 
                 this.carte1 = null;
                 this.carte2 = null;
@@ -445,9 +447,28 @@ public class MemoryController {
 
     }
 
+    /**
+     * Permet de récupérer un élément à partir de son ID
+     *
+     * @param id l'id de l'élément à retourner
+     * @return l'élément possédant cet id
+     */
     private Node getById(String id) {
         Scene scene = root.getScene();
         return scene.lookup("#" + id);
+    }
+
+    public static void delay(long millis, Runnable continuation) {
+        Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try { Thread.sleep(millis); }
+                catch (InterruptedException e) { }
+                return null;
+            }
+        };
+        sleeper.setOnSucceeded(event -> continuation.run());
+        new Thread(sleeper).start();
     }
 
 }
