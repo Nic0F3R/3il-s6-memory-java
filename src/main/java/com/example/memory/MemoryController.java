@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -64,6 +65,9 @@ public class MemoryController {
     private Button btn15;
     @FXML
     private Button btn16;
+
+    @FXML
+    private Label label_gagne;
 
     private int nbCarteRetournee; // nombre de carte(s) retournée(s)
     private Carte carte1; // première carte retournée
@@ -400,7 +404,6 @@ public class MemoryController {
                 }
             }
 
-            System.out.println("j'ai joué");
         } else if(this.nbCarteRetournee == 1) {
             Button btn = (Button) this.getById(pfIdCarteInterface);
 
@@ -423,7 +426,13 @@ public class MemoryController {
                 //btn.setStyle("-fx-border-color: #75975e;");
 
                 this.nbCarteRetournee = 0;
-                this.nbCarteTrouvees++;
+                this.nbCarteTrouvees = this.nbCarteTrouvees + 2;
+
+                System.out.println(this.nbCarteTrouvees);
+
+                if(this.nbCarteTrouvees == 16) {
+                    label_gagne.setText("Vous avez gagné ! c:");
+                }
 
             } else {
                 // délais puis retourne la carte
