@@ -19,7 +19,10 @@ public class Carte {
     private String nomCarte;
 
     /**
+     * Constructeur de Carte
+     *
      * @param pfIdCarte l'identifiant de la carte
+     * @param pfTypeCarte le type de la carte (permettant de gérer les paires)
      * @param pfNomCarte le nom de la carte
      */
     public Carte(int pfIdCarte, int pfTypeCarte, String pfNomCarte) {

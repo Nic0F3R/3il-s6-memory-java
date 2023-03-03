@@ -16,6 +16,7 @@
 
 # Ce qui n'a pas été implémenté
 
+- Mélange aléatoire des cartes.
 - Absence de compteur.
 - Absence de système de score.
 - Les cartes n'ont pas d'image.

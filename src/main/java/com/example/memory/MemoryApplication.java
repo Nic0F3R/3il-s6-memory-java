@@ -2,7 +2,6 @@ package com.example.memory;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -30,6 +29,9 @@ public class MemoryApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Fonction d'entrée (main) du programme
+     */
     public static void main(String[] args) {
         launch();
     }

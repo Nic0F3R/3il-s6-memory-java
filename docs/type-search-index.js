@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.example.memory","l":"Carte"},{"p":"com.example.memory","l":"MemoryApplication"},{"p":"com.example.memory","l":"MemoryController"}];updateSearchResults();

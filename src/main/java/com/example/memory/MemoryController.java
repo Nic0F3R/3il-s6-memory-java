@@ -1,8 +1,5 @@
 package com.example.memory;
 
-import javafx.beans.InvalidationListener;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 import java.util.*;
@@ -26,7 +22,6 @@ import java.util.*;
  */
 public class MemoryController {
 
-    //private ObservableList<Carte> listeCarte; // Liste des cartes
     private List<Carte> listeCarte;
     private int nbCarte; // Nombre de cartes dans la partie (doit être un nombre pair positif)
 
@@ -160,175 +155,6 @@ public class MemoryController {
      */
     @FXML
     public void initialize() throws Exception {
-        /*
-        listeCarte = new ObservableList<Carte>() {
-            @Override
-            public void addListener(ListChangeListener<? super Carte> listChangeListener) {
-
-            }
-
-            @Override
-            public void removeListener(ListChangeListener<? super Carte> listChangeListener) {
-
-            }
-
-            @Override
-            public boolean addAll(Carte... cartes) {
-                return false;
-            }
-
-            @Override
-            public boolean setAll(Carte... cartes) {
-                return false;
-            }
-
-            @Override
-            public boolean setAll(Collection<? extends Carte> collection) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Carte... cartes) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Carte... cartes) {
-                return false;
-            }
-
-            @Override
-            public void remove(int i, int i1) {
-
-            }
-
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Carte> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(Carte carte) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends Carte> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(int index, Collection<? extends Carte> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public Carte get(int index) {
-                return null;
-            }
-
-            @Override
-            public Carte set(int index, Carte element) {
-                return null;
-            }
-
-            @Override
-            public void add(int index, Carte element) {
-
-            }
-
-            @Override
-            public Carte remove(int index) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public ListIterator<Carte> listIterator() {
-                return null;
-            }
-
-            @Override
-            public ListIterator<Carte> listIterator(int index) {
-                return null;
-            }
-
-            @Override
-            public List<Carte> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-
-            @Override
-            public void addListener(InvalidationListener invalidationListener) {
-
-            }
-
-            @Override
-            public void removeListener(InvalidationListener invalidationListener) {
-
-            }
-        };
-
-        */
         this.listeCarte = new ArrayList<Carte>();
 
         this.nbCarteRetournee = 0;
@@ -373,6 +199,8 @@ public class MemoryController {
     }
 
     /**
+     * Génère et retourne les valeurs de la liste de cartes générée sous forme de chaîne de caractères
+     *
      * @return la chaîne de caractères des valeurs de la liste de cartes
      */
     public String afficherListeCarte() {
@@ -387,7 +215,7 @@ public class MemoryController {
     }
 
     /**
-     * Permet de retourner la carte
+     * Permet de retourner la première carte de l'interface, puis la seconde, vérifie l'obtention d'une paire ou non, et modifie l'interface en fonction
      *
      * @param pfIdCarteInterface id du bouton cliqué par l'utilisateur
      */
@@ -463,6 +291,12 @@ public class MemoryController {
         return scene.lookup("#" + id);
     }
 
+    /**
+     * Permet d'ajouter un délais
+     *
+     * @param millis le délais en ms
+     * @param continuation
+     */
     public static void delay(long millis, Runnable continuation) {
         Task<Void> sleeper = new Task<Void>() {
             @Override
