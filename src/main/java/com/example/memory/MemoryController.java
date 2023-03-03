@@ -29,39 +29,6 @@ public class MemoryController {
     private VBox root;
 
     @FXML
-    private Button btn1;
-    @FXML
-    private Button btn2;
-    @FXML
-    private Button btn3;
-    @FXML
-    private Button btn4;
-    @FXML
-    private Button btn5;
-    @FXML
-    private Button btn6;
-    @FXML
-    private Button btn7;
-    @FXML
-    private Button btn8;
-    @FXML
-    private Button btn9;
-    @FXML
-    private Button btn10;
-    @FXML
-    private Button btn11;
-    @FXML
-    private Button btn12;
-    @FXML
-    private Button btn13;
-    @FXML
-    private Button btn14;
-    @FXML
-    private Button btn15;
-    @FXML
-    private Button btn16;
-
-    @FXML
     private Label label_gagne;
 
     private int nbCarteRetournee; // nombre de carte(s) retournée(s)
