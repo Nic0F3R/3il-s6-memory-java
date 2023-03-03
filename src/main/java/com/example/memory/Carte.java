@@ -10,7 +10,8 @@ package com.example.memory;
  */
 public class Carte {
 
-    private int idCarte;
+    private int idCarte; // identifiant unique de la carte
+    private String idCarteInterface; // identifiant du bouton de l'interface à laquelle la Carte est associée
 
     // Identifiant non unique déterminant le type de la carte (pour déclarer la paire)
     private int typeCarte;
@@ -36,6 +37,13 @@ public class Carte {
     }
 
     /**
+     * @return l'identifiant du bouton de l'interface associée à la Carte
+     */
+    public String getIdCarteInterface() {
+        return this.idCarteInterface;
+    }
+
+    /**
      * @return le type de la carte
      */
     public int getTypeCarte() {
@@ -55,6 +63,10 @@ public class Carte {
     public void setIdCarte(int pfIdCarte) {
         //TODO : vérifier si idCarte est un integer > 0
         this.idCarte = pfIdCarte;
+    }
+
+    public void setIdCarteInterface(String pfIdCarteInterface) {
+        this.idCarteInterface = pfIdCarteInterface;
     }
 
     /**
