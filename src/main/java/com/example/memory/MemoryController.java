@@ -5,7 +5,12 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 import java.util.*;
 
@@ -24,23 +29,45 @@ public class MemoryController {
     private int nbCarte; // Nombre de cartes dans la partie (doit être un nombre pair positif)
 
     @FXML
+    private VBox root;
+
+    @FXML
     private Button btn1;
+    @FXML
     private Button btn2;
+    @FXML
     private Button btn3;
+    @FXML
     private Button btn4;
+    @FXML
     private Button btn5;
+    @FXML
     private Button btn6;
+    @FXML
     private Button btn7;
+    @FXML
     private Button btn8;
+    @FXML
     private Button btn9;
+    @FXML
     private Button btn10;
+    @FXML
     private Button btn11;
+    @FXML
     private Button btn12;
+    @FXML
     private Button btn13;
+    @FXML
     private Button btn14;
+    @FXML
     private Button btn15;
+    @FXML
     private Button btn16;
 
+    private int nbCarteRetournee; // nombre de carte(s) retournée(s)
+    private Carte carte1; // première carte retournée
+    private Carte carte2; // seconde carte retournée
+    private int nbCarteTrouvees; // nombre de cartes trouvées. Si == 16 -> partie gagnée
 
     @FXML
     protected void actionBouton(ActionEvent evt) {
@@ -50,20 +77,84 @@ public class MemoryController {
             Button btn = (Button) evt.getSource();
 
             if(btn.getId().equals("btn1")) {
-                jouer();
+                jouer("btn1");
+            }
+
+            if(btn.getId().equals("btn2")) {
+                jouer("btn2");
+            }
+
+            if(btn.getId().equals("btn3")) {
+                jouer("btn3");
+            }
+
+            if(btn.getId().equals("btn4")) {
+                jouer("btn4");
+            }
+
+            if(btn.getId().equals("btn5")) {
+                jouer("btn5");
+            }
+
+            if(btn.getId().equals("btn6")) {
+                jouer("btn6");
+            }
+
+            if(btn.getId().equals("btn7")) {
+                jouer("btn7");
+            }
+
+            if(btn.getId().equals("btn8")) {
+                jouer("btn8");
+            }
+
+            if(btn.getId().equals("btn9")) {
+                jouer("btn9");
+            }
+
+            if(btn.getId().equals("btn10")) {
+                jouer("btn10");
+            }
+
+            if(btn.getId().equals("btn11")) {
+                jouer("btn11");
+            }
+
+            if(btn.getId().equals("btn12")) {
+                jouer("btn12");
+            }
+
+            if(btn.getId().equals("btn13")) {
+                jouer("btn13");
+            }
+
+            if(btn.getId().equals("btn14")) {
+                jouer("btn14");
+            }
+
+            if(btn.getId().equals("btn15")) {
+                jouer("btn15");
+            }
+
+            if(btn.getId().equals("btn16")) {
+                jouer("btn16");
             }
 
         }
 
     }
 
+    @FXML
+    private void reload() throws Exception {
+        Scene scene = root.getScene();
+        scene.setRoot(FXMLLoader.load(this.getClass().getResource("memory-application-view.fxml")));
+    }
+
     /**
      * Fonction d'initialisation du contrôleur
      */
     @FXML
-    public void initialize() {
-        //todo
-
+    public void initialize() throws Exception {
         /*
         listeCarte = new ObservableList<Carte>() {
             @Override
@@ -233,8 +324,10 @@ public class MemoryController {
         };
 
         */
-
         this.listeCarte = new ArrayList<Carte>();
+
+        this.nbCarteRetournee = 0;
+        this.nbCarteTrouvees = 0;
 
         creerPartie(16);
     }
@@ -288,8 +381,73 @@ public class MemoryController {
         return res;
     }
 
-    public void jouer() {
-        System.out.println("j'ai joué");
+    /**
+     * Permet de retourner la carte
+     *
+     * @param pfIdCarteInterface id du bouton cliqué par l'utilisateur
+     */
+    public void jouer(String pfIdCarteInterface) {
+
+        if(this.nbCarteRetournee == 0) {
+            Button btn = (Button) this.getById(pfIdCarteInterface);
+
+            for(Carte c : this.listeCarte) {
+                if(c.getIdCarteInterface().equals(pfIdCarteInterface)) {
+                    this.carte1 = c;
+                    btn.setText(Integer.toString(c.getTypeCarte())); // retourne la carte
+                    this.nbCarteRetournee++;
+                }
+            }
+
+            System.out.println("j'ai joué");
+        } else if(this.nbCarteRetournee == 1) {
+            Button btn = (Button) this.getById(pfIdCarteInterface);
+
+            for(Carte c : this.listeCarte) {
+                if(c.getIdCarteInterface().equals(pfIdCarteInterface)) {
+                    this.carte2 = c;
+                    btn.setText(Integer.toString(c.getTypeCarte())); // retourne la carte
+                }
+            }
+
+            if(carte1.getTypeCarte() == carte2.getTypeCarte()) {
+
+                Button btnCarte1 = (Button) this.getById(carte1.getIdCarteInterface());
+
+                this.carte1 = null;
+                this.carte2 = null;
+
+
+
+                btn.setDisable(true);
+                btnCarte1.setDisable(true);
+                //btn.setStyle("-fx-border-color: #75975e;");
+
+                this.nbCarteRetournee = 0;
+                this.nbCarteTrouvees++;
+            } else {
+                // délais puis retourne la carte
+
+                Button btnCarte1 = (Button) this.getById(carte1.getIdCarteInterface());
+
+                btn.setText("?");
+                btnCarte1.setText("?");
+
+
+
+                this.carte1 = null;
+                this.carte2 = null;
+
+                this.nbCarteRetournee = 0;
+            }
+
+        }
+
+    }
+
+    private Node getById(String id) {
+        Scene scene = root.getScene();
+        return scene.lookup("#" + id);
     }
 
 }
