@@ -428,8 +428,6 @@ public class MemoryController {
                 this.nbCarteRetournee = 0;
                 this.nbCarteTrouvees = this.nbCarteTrouvees + 2;
 
-                System.out.println(this.nbCarteTrouvees);
-
                 if(this.nbCarteTrouvees == 16) {
                     label_gagne.setText("Vous avez gagné ! c:");
                 }
@@ -443,8 +441,6 @@ public class MemoryController {
                     btn.setText("?");
                     btnCarte1.setText("?");
                 });
-                //btn.setText("?");
-                //btnCarte1.setText("?");
 
                 this.carte1 = null;
                 this.carte2 = null;
